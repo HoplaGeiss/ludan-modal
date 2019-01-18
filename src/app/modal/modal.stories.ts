@@ -1,9 +1,10 @@
-import { Component, OnDestroy, Input } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
 import { Subject } from 'rxjs';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
-import { GreeterModule } from './greeter.module';
 import { withReadme } from 'storybook-readme';
+
+import { ModalModule } from './modal.module';
 
 const readme = require('./readme.md');
 
@@ -11,15 +12,12 @@ const readme = require('./readme.md');
   selector: 'ludan-story',
   template: `
     <div style="margin: auto; width: 60%; margin-top: 10%">
-      <h1 style="border-bottom: 1px solid #ccc;">Greeter</h1>
-      <!-- prettier-ignore -->
-      <ludan-greeter [name]="changeName ? 'you' : 'here'
-      "></ludan-greeter>
+      <h1 style="border-bottom: 1px solid #ccc;">Modal</h1>
+      <ludan-modal></ludan-modal>
     </div>
   `
 })
 class MockComponent implements OnDestroy {
-  @Input() changeName: boolean;
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
   ngOnDestroy() {
@@ -34,14 +32,12 @@ storiesOf('Greeter', module)
     'Default',
     withReadme(readme, () => ({
       moduleMetadata: {
-        imports: [GreeterModule],
+        imports: [ModalModule],
         declarations: [MockComponent]
       },
-      props: {
-        changeName: boolean('Change Name', false)
-      },
+      props: {},
       template: `
-      <ludan-story [changeName]='changeName'></ludan-story>
+      <ludan-story></ludan-story>
     `
     }))
   );

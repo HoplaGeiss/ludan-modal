@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GreeterModule } from './greeter/greeter.module';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
-  imports: [BrowserModule, GreeterModule, AppRoutingModule],
+  imports: [BrowserModule, ModalModule, AppRoutingModule],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
