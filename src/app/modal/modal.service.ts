@@ -1,50 +1,42 @@
 import { Injectable } from '@angular/core';
+
 import { ModalComponent } from './modal.component';
 
 @Injectable()
 export class ModalService {
-  private modals: Array<ModalComponent>;
+  private modals: ModalComponent[] = [];
 
-  constructor() {
-    this.modals = [];
-  }
-
-  registerModal(newModal: ModalComponent): void {
+  registerModal(newModal: ModalComponent): ModalComponent[] {
     const modal = this.findModal(newModal.modalId);
 
     // Delete existing to replace the modal
-    if (modal) {
-      this.modals.splice(this.modals.indexOf(modal));
-    }
+    if (modal) this.modals.splice(this.modals.indexOf(modal));
 
     this.modals.push(newModal);
+    return this.modals;
   }
 
-  open(modalId: string): void {
+  open(modalId: string): ModalComponent {
+    const modal = this.findModal(modalId);
+
+    if (modal) modal.isOpen = true;
+    return modal;
+  }
+
+  close(modalId: string, checkBlocking = false): ModalComponent {
     const modal = this.findModal(modalId);
 
     if (modal) {
-      modal.isOpen = true;
-    }
-  }
-
-  close(modalId: string, checkBlocking = false): void {
-    const modal = this.findModal(modalId);
-
-    if (modal) {
-      if (checkBlocking && modal.blocking) {
-        return;
-      }
+      if (checkBlocking && modal.blocking) return;
 
       modal.isOpen = false;
     }
+    return modal;
   }
 
   private findModal(modalId: string): ModalComponent {
     for (const modal of this.modals) {
-      if (modal.modalId === modalId) {
-        return modal;
-      }
+      if (modal.modalId === modalId) return modal;
     }
     return null;
   }
