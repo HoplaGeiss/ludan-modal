@@ -57,15 +57,43 @@ describe('SudokuService', () => {
       expect(modal).toBe(null);
     });
 
-    it('[registered modal] => closes', () => {
-      const modalComponent = new ModalComponent(service);
-      modalComponent.modalId = 'modalId';
-      service.registerModal(modalComponent);
-      modalComponent.isOpen = true;
+    describe('[registered modal]', () => {
+      it('[we do not check blocking] => closes', () => {
+        const modalComponent = new ModalComponent(service);
+        modalComponent.modalId = 'modalId';
+        service.registerModal(modalComponent);
+        modalComponent.isOpen = true;
 
-      const modal = service.close('modalId');
-      expect(modal).toEqual(modalComponent);
-      expect(modalComponent.isOpen).toBe(false);
+        const modal = service.close('modalId');
+        expect(modal).toEqual(modalComponent);
+        expect(modalComponent.isOpen).toBe(false);
+      });
+
+      describe('[check blocking]', () => {
+        it('[modal is not blocking] => closes', () => {
+          const modalComponent = new ModalComponent(service);
+          modalComponent.modalId = 'modalId';
+          service.registerModal(modalComponent);
+          modalComponent.isOpen = true;
+          modalComponent.blocking = false;
+
+          const modal = service.close('modalId', true);
+          expect(modal).toEqual(modalComponent);
+          expect(modalComponent.isOpen).toBe(false);
+        });
+
+        it('[modal blocking] => do not close', () => {
+          const modalComponent = new ModalComponent(service);
+          modalComponent.modalId = 'modalId';
+          service.registerModal(modalComponent);
+          modalComponent.isOpen = true;
+          modalComponent.blocking = true;
+
+          const modal = service.close('modalId', true);
+          expect(modal).toEqual(modalComponent);
+          expect(modalComponent.isOpen).toBe(true);
+        });
+      });
     });
   });
 });

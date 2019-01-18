@@ -26,11 +26,8 @@ export class ModalService {
   close(modalId: string, checkBlocking = false): ModalComponent {
     const modal = this.findModal(modalId);
 
-    if (modal) {
-      if (checkBlocking && modal.blocking) return;
+    if (modal && (!checkBlocking || (checkBlocking && !modal.blocking))) modal.isOpen = false;
 
-      modal.isOpen = false;
-    }
     return modal;
   }
 
