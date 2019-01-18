@@ -10,11 +10,13 @@ import { ModalService } from './modal.service';
 
       <div class="modal">
         <div class="title" *ngIf="modalTitle">
-          <span class="title-text">{{ modalTitle }}</span>
-          <span class="right-align" (click)="close(true)"><i class="material-icons md-24">clear</i></span>
+          <span class="text">{{ modalTitle }}</span>
+          <span class="right-align" (click)="close(true)"><img src="assets/icons/clear2.svg" alt="clear"/></span>
         </div>
 
-        <div class="body"><ng-content></ng-content></div>
+        <ng-content select=".header"></ng-content>
+        <ng-content select=".body"></ng-content>
+        <ng-content select=".footer"></ng-content>
       </div>
     </div>
   `
