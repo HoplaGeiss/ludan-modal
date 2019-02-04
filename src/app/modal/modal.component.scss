@@ -36,19 +36,15 @@
 }
 
 .title {
-  background-color: red;
-  text-align: center;
+  background-color: #2385c6;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
   color: white;
-  line-height: 40px;
 
-  .right-align {
-    position: absolute;
-    right: 5px;
-    &,
-    img {
-      line-height: 40px;
-    }
-
+  img {
     &:hover {
       cursor: pointer;
       transform: scale(1.1);
