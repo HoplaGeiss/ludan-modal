@@ -18,3 +18,18 @@ Check out `app.component.ts`
   <button (click)="openModal()">Open a modal</button>
   <ludan-modal [modalId]="'exampleModal'"> hello </ludan-modal>
 ```
+
+## Deploy on firebase
+
+```
+npm build
+firebase deploy
+```
+
+## Release npm package
+
+```
+npm build ngx-ludan-modal
+cd dist/ngx-ludan-modal
+npm publish
+```
