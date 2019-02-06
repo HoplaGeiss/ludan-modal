@@ -1,0 +1,9 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "ludan", "camelCase"],
+    "component-selector": [true, "element", "ludan", "kebab-case"],
+    "curly": false,
+    "semicolon": [true, "always", "ignore-bound-class-methods"]
+  }
+}

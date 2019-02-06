@@ -27,7 +27,8 @@ export class ModalComponent implements OnInit {
   @Input() blocking = false;
   isOpen = false;
 
-  @HostListener('keyup') onMouseEnter(event) {
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
     this.keyup(event);
   }
 

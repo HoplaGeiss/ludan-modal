@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-ludan-modal": [
+        "dist/ngx-ludan-modal"
+      ],
+      "ngx-ludan-modal/*": [
+        "dist/ngx-ludan-modal/*"
+      ]
+    }
   }
 }

@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "ngx-ludan-modal": {
+      "root": "projects/ngx-ludan-modal",
+      "sourceRoot": "projects/ngx-ludan-modal/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-ludan-modal/tsconfig.lib.json",
+            "project": "projects/ngx-ludan-modal/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-ludan-modal/src/test.ts",
+            "tsConfig": "projects/ngx-ludan-modal/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-ludan-modal/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-ludan-modal/tsconfig.lib.json",
+              "projects/ngx-ludan-modal/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ludan-modal"

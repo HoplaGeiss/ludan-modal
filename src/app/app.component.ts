@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ModalService } from './modal/modal.service';
+import { ModalService } from '../../projects/ngx-ludan-modal/src/lib/modal.service';
 
 @Component({
   selector: 'ludan-root',
