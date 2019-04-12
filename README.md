@@ -22,7 +22,7 @@ Check out `app.component.ts`
 ## Deploy on firebase
 
 ```
-npm build
+ng build
 firebase deploy
 ```
 
