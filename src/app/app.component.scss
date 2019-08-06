@@ -1,24 +1,27 @@
+$primary: #e3875a;
+$grey: #dddddd;
+
 .body {
   padding: 10px 5px;
 }
 
 .footer {
   text-align: center;
-  background: #e8e5e5;
+  background: $grey;
   line-height: 30px;
 }
 
 button {
   padding: 4px 10px;
   font-size: 1em;
-  background: #2385c6;
+  background: $primary;
   color: white;
   border-radius: 1px;
   border: none;
   outline: none;
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
-    background: #319ae0;
+    filter: brightness(1.1);
   }
 }

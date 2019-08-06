@@ -1,3 +1,6 @@
+$primary: #e3875a;
+$grey: #dddddd;
+
 .modal-overlay {
   background-color: rgba(0, 0, 0, 0.4);
   bottom: 0;
@@ -19,16 +22,26 @@
 
 .modal {
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.22), 0 17px 20px 0 rgba(0, 0, 0, 0.12);
-
   background-color: white;
-  left: 10%;
   max-height: calc(100% - 10em);
   overflow-y: auto;
   position: fixed;
-  top: 5em;
-  width: 80%;
+  top: 7em;
+  width: 600px;
+  left: calc(50% - 300px);
+  margin: 0 auto;
   z-index: 1100;
   transition: all 0.5s ease;
+
+  @media only screen and (max-width: 700px) {
+    width: 400px;
+    left: calc(50% - 200px);
+  }
+
+  @media only screen and (max-width: 450px) {
+    width: 300px;
+    left: calc(50% - 150px);
+  }
 
   .body {
     padding: 1.2em;
@@ -36,7 +49,7 @@
 }
 
 .title {
-  background-color: #2385c6;
+  background-color: $primary;
   height: 40px;
   display: flex;
   justify-content: space-between;
